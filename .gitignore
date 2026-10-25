@@ -1,0 +1,33 @@
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+build/
+dist/
+.DS_Store
+.matplotlib/
+
+# Manuscripts, research notes, and temporary solver files stay out of this repo.
+*.tex
+*.txt
+*.aux
+*.toc
+*.out
+*.synctex.gz
+*.log
+*.dat
+archive/
+sources/
+
+# Figures are regenerated from the supplied scripts.
+figures/
+*.pdf
+*.png
+
+# Keep only the published reference results in outputs/.
+outputs/*
+!outputs/hexagon_results_80.json
+!outputs/hexagon_results_160.json
+!outputs/eigenvalue_checks.json
+!outputs/geometry_checks.json
+!outputs/width_comparisons_checks.json

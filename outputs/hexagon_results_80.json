@@ -1,0 +1,92 @@
+{
+  "hexagon_0.422649731": {
+    "area": 0.7047302352378394,
+    "torsion": 0.018318219208991085,
+    "derivative": 0.042279669883476326,
+    "vertices": 5417,
+    "N": 80,
+    "flux": "outputs/hexagon_0.422649731_80_flux.dat",
+    "r": 0.42264973081037416
+  },
+  "hexagon_0.422749731": {
+    "area": 0.7047517720220671,
+    "torsion": 0.01832244694941706,
+    "derivative": 0.04224836789297099,
+    "vertices": 5356,
+    "N": 80,
+    "flux": "outputs/hexagon_0.422749731_80_flux.dat",
+    "r": 0.42274973081037415
+  },
+  "hexagon_0.425000000": {
+    "area": 0.7052294838368383,
+    "torsion": 0.018416211292120344,
+    "derivative": 0.04123967658273248,
+    "vertices": 5409,
+    "N": 80,
+    "flux": "outputs/hexagon_0.425000000_80_flux.dat",
+    "r": 0.425
+  },
+  "hexagon_0.430000000": {
+    "area": 0.7062431955543351,
+    "torsion": 0.018616393225651243,
+    "derivative": 0.03898546733719622,
+    "vertices": 5450,
+    "N": 80,
+    "flux": "outputs/hexagon_0.430000000_80_flux.dat",
+    "r": 0.43
+  },
+  "hexagon_0.440000000": {
+    "area": 0.708070456355661,
+    "torsion": 0.018981296605449522,
+    "derivative": 0.03414892340938294,
+    "vertices": 5475,
+    "N": 80,
+    "flux": "outputs/hexagon_0.440000000_80_flux.dat",
+    "r": 0.44
+  },
+  "hexagon_0.450000000": {
+    "area": 0.7096262434233568,
+    "torsion": 0.019296185086966133,
+    "derivative": 0.028953650954259575,
+    "vertices": 5529,
+    "N": 80,
+    "flux": "outputs/hexagon_0.450000000_80_flux.dat",
+    "r": 0.45
+  },
+  "hexagon_0.460000000": {
+    "area": 0.7109039086039086,
+    "torsion": 0.01955796686432332,
+    "derivative": 0.02345791854786376,
+    "vertices": 5170,
+    "N": 80,
+    "flux": "outputs/hexagon_0.460000000_80_flux.dat",
+    "r": 0.46
+  },
+  "hexagon_0.480000000": {
+    "area": 0.7126192794253862,
+    "torsion": 0.019913242098722254,
+    "derivative": 0.011934424363519757,
+    "vertices": 5276,
+    "N": 80,
+    "flux": "outputs/hexagon_0.480000000_80_flux.dat",
+    "r": 0.48
+  },
+  "hexagon_0.495000000": {
+    "area": 0.7131575203477194,
+    "torsion": 0.020025704254874526,
+    "derivative": 0.0030005905245963646,
+    "vertices": 5254,
+    "N": 80,
+    "flux": "outputs/hexagon_0.495000000_80_flux.dat",
+    "r": 0.495
+  },
+  "hexagon_0.500000000": {
+    "area": 0.7131934402077837,
+    "torsion": 0.020033222974772346,
+    "derivative": -3.905946259937056e-06,
+    "vertices": 5223,
+    "N": 80,
+    "flux": "outputs/hexagon_0.500000000_80_flux.dat",
+    "r": 0.5
+  }
+}

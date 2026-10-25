@@ -1,0 +1,69 @@
+// Numerical evidence only: P2 elements on an inscribed polygonal mesh.
+// Geometry input shares explore_caps.py's eight-column circular-arc format.
+include "getARGV.idp"
+verbosity=0;
+string input=getARGV("-input","arcs.dat");
+string fluxout=getARGV("-flux","eigen_flux.dat");
+int subdivisions=getARGV("-N",60);
+ifstream data(input);
+int count;
+data >> count;
+real[int] cx(count),cy(count),rad(count),aa(count),span(count);
+real[int] vx(count),vy(count),vr(count);
+for(int j=0;j<count;j++)
+    data >> cx[j] >> cy[j] >> rad[j] >> aa[j] >> span[j]
+         >> vx[j] >> vy[j] >> vr[j];
+int[int] sizes(count);
+for(int j=0;j<count;j++) sizes[j]=max(2,int(ceil(subdivisions*rad[j]*span[j])));
+border boundary(t=0,1;j){
+    real theta=aa[j]+t*span[j];
+    x=cx[j]+rad[j]*cos(theta);
+    y=cy[j]+rad[j]*sin(theta);
+    label=j+1;
+}
+mesh Th=buildmesh(boundary(sizes));
+fespace Wh(Th,P2);
+Wh u,test;
+int[int] labels(count);
+for(int j=0;j<count;j++) labels[j]=j+1;
+varf stiffness(u,test)=int2d(Th)(dx(u)*dx(test)+dy(u)*dy(test))
+    +on(labels,u=0);
+varf mass(u,test)=int2d(Th)(u*test);
+matrix K=stiffness(Wh,Wh,solver=sparsesolver);
+matrix M=mass(Wh,Wh);
+int nev=3;
+real[int] values(nev);
+Wh[int] modes(nev);
+int converged=EigenValue(K,M,sym=true,sigma=0.,value=values,vector=modes,
+                        tol=1e-11,maxit=1000,ncv=12);
+assert(converged>=1);
+int first=0;
+for(int j=1;j<min(converged,nev);j++) if(values[j]<values[first]) first=j;
+u=modes[first];
+real normalization=sqrt(int2d(Th)(u*u));
+if(int2d(Th)(u)<0) normalization=-normalization;
+u[]=u[]/normalization;
+real derivative=0.;
+for(int j=0;j<count;j++)
+    derivative-=int1d(Th,j+1,qforder=9)(
+        (dx(u)*N.x+dy(u)*N.y)^2*(vx[j]*N.x+vy[j]*N.y+vr[j]));
+real rayleigh=int2d(Th)(dx(u)*dx(u)+dy(u)*dy(u));
+cout.precision(17);
+cout << "RESULT " << values[first] << " " << derivative << " "
+     << int2d(Th)(1.) << " " << Th.nv << " "
+     << abs(rayleigh-values[first]) << endl;
+ofstream flux(fluxout);
+flux.precision(17);
+for(int j=0;j<count;j++){
+    for(int k=1;k<100;k++){
+        real f=k/100.;
+        real theta=aa[j]+f*span[j];
+        real xx=cx[j]+rad[j]*cos(theta);
+        real yy=cy[j]+rad[j]*sin(theta);
+        // This displacement exceeds the chordal sag for N>=50 here.
+        real eps=2e-4;
+        real q=-(dx(u)(xx-eps*cos(theta),yy-eps*sin(theta))*cos(theta)
+                +dy(u)(xx-eps*cos(theta),yy-eps*sin(theta))*sin(theta));
+        flux << j << " " << f << " " << q << endl;
+    }
+}

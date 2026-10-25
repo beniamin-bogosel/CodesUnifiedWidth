@@ -1,0 +1,184 @@
+{
+  "status": "Floating-point P2 evidence; tail estimates assume exact spectral data and do not certify FEM errors",
+  "spectrum_refinement": [
+    {
+      "kind": "straight",
+      "N": 55,
+      "lambda2_equal": 76.99682768077538,
+      "lambda3_equal": 76.99682815356091,
+      "lambda2_unequal": 76.18661979738201,
+      "lambda3_unequal": 77.87346045926901,
+      "delta_lambda3": 0.8766323057080996
+    },
+    {
+      "kind": "straight",
+      "N": 100,
+      "lambda2_equal": 76.99462002919843,
+      "lambda3_equal": 76.99462023039568,
+      "lambda2_unequal": 76.18464808809425,
+      "lambda3_unequal": 77.87050773785772,
+      "delta_lambda3": 0.8758875074620391
+    },
+    {
+      "kind": "straight",
+      "N": 160,
+      "lambda2_equal": 76.99392774907483,
+      "lambda3_equal": 76.99392777219946,
+      "lambda2_unequal": 76.1841178255406,
+      "lambda3_unequal": 77.8696678367235,
+      "delta_lambda3": 0.8757400645240381
+    },
+    {
+      "kind": "curved",
+      "N": 55,
+      "lambda2_equal": 65.39478085723613,
+      "lambda3_equal": 65.39481652497118,
+      "lambda2_unequal": 64.9203493956986,
+      "lambda3_unequal": 65.89372768881917,
+      "delta_lambda3": 0.4989111638479926
+    },
+    {
+      "kind": "curved",
+      "N": 100,
+      "lambda2_equal": 65.38870328826695,
+      "lambda3_equal": 65.3887035884363,
+      "lambda2_unequal": 64.91445539031174,
+      "lambda3_unequal": 65.88737170152889,
+      "delta_lambda3": 0.4986681130925916
+    },
+    {
+      "kind": "curved",
+      "N": 160,
+      "lambda2_equal": 65.38695008358167,
+      "lambda3_equal": 65.38695175806211,
+      "lambda2_unequal": 64.91283162685467,
+      "lambda3_unequal": 65.8855637914546,
+      "delta_lambda3": 0.49861203339249016
+    }
+  ],
+  "heat_refinement": [
+    {
+      "kind": "straight",
+      "N": 100,
+      "t": 0.01,
+      "difference": 2.9336522918144148e-06,
+      "sum_tail_estimates": 8.214858587651597e-08
+    },
+    {
+      "kind": "straight",
+      "N": 100,
+      "t": 0.02,
+      "difference": 1.2437529668118952e-05,
+      "sum_tail_estimates": 6.553704525141796e-14
+    },
+    {
+      "kind": "straight",
+      "N": 100,
+      "t": 0.05,
+      "difference": 1.7231970138475994e-05,
+      "sum_tail_estimates": 3.3283967682318417e-32
+    },
+    {
+      "kind": "straight",
+      "N": 100,
+      "t": 0.1,
+      "difference": 6.9264871457967725e-06,
+      "sum_tail_estimates": 1.0767341813435004e-62
+    },
+    {
+      "kind": "straight",
+      "N": 160,
+      "t": 0.01,
+      "difference": 2.847771299607782e-06,
+      "sum_tail_estimates": 8.217615272996993e-08
+    },
+    {
+      "kind": "straight",
+      "N": 160,
+      "t": 0.02,
+      "difference": 1.234841671829412e-05,
+      "sum_tail_estimates": 6.557986071736466e-14
+    },
+    {
+      "kind": "straight",
+      "N": 160,
+      "t": 0.05,
+      "difference": 1.7168415133564374e-05,
+      "sum_tail_estimates": 3.3337337692636436e-32
+    },
+    {
+      "kind": "straight",
+      "N": 160,
+      "t": 0.1,
+      "difference": 6.90353375781827e-06,
+      "sum_tail_estimates": 1.0801550027862802e-62
+    },
+    {
+      "kind": "curved",
+      "N": 100,
+      "t": 0.01,
+      "difference": 1.2179689686808715e-06,
+      "sum_tail_estimates": 3.276441126306524e-07
+    },
+    {
+      "kind": "curved",
+      "N": 100,
+      "t": 0.02,
+      "difference": 4.975740637069848e-06,
+      "sum_tail_estimates": 9.399880935772756e-13
+    },
+    {
+      "kind": "curved",
+      "N": 100,
+      "t": 0.05,
+      "difference": 9.231830636391436e-06,
+      "sum_tail_estimates": 2.2321706351018847e-29
+    },
+    {
+      "kind": "curved",
+      "N": 100,
+      "t": 0.1,
+      "difference": 4.875670615189787e-06,
+      "sum_tail_estimates": 4.4602026998051044e-57
+    },
+    {
+      "kind": "curved",
+      "N": 160,
+      "t": 0.01,
+      "difference": 8.74578161558226e-07,
+      "sum_tail_estimates": 3.278213895317347e-07
+    },
+    {
+      "kind": "curved",
+      "N": 160,
+      "t": 0.02,
+      "difference": 4.6627579753932835e-06,
+      "sum_tail_estimates": 9.4098035252571e-13
+    },
+    {
+      "kind": "curved",
+      "N": 160,
+      "t": 0.05,
+      "difference": 9.009822206612617e-06,
+      "sum_tail_estimates": 2.2379788591367475e-29
+    },
+    {
+      "kind": "curved",
+      "N": 160,
+      "t": 0.1,
+      "difference": 4.778238759974018e-06,
+      "sum_tail_estimates": 4.4833452488422735e-57
+    }
+  ],
+  "survey_configurations": 48,
+  "survey_max_delta_lambda2": -0.06162279183844532,
+  "disk_cutoffs": {
+    "straight": 0.4286913790524959,
+    "curved": 0.473640741796041
+  },
+  "heat_survey_sign_counts": {
+    "-1": 0,
+    "0": 28,
+    "1": 116
+  }
+}

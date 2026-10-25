@@ -1,0 +1,32 @@
+{
+  "disk_max_relative_error_first_12": 6.735889399345218e-05,
+  "disk_heat_check": {
+    "0.01": {
+      "exact_bessel_sum": 0.46370101276265135,
+      "FEM_partial_sum": 0.4635718164520707,
+      "absolute_error": 0.00012919631058067038
+    },
+    "0.02": {
+      "exact_bessel_sum": 0.3511344149577218,
+      "FEM_partial_sum": 0.3510986007541868,
+      "absolute_error": 3.581420353498954e-05
+    },
+    "0.05": {
+      "exact_bessel_sum": 0.17110091212456469,
+      "FEM_partial_sum": 0.1710762230620305,
+      "absolute_error": 2.468906253419445e-05
+    },
+    "0.1": {
+      "exact_bessel_sum": 0.05374581511557151,
+      "FEM_partial_sum": 0.05373393695239285,
+      "absolute_error": 1.1878163178664913e-05
+    }
+  },
+  "triangle_first_four_relative_error": 2.55126088477553e-07,
+  "triangle_eigenvalues": [
+    39.47841821774481,
+    92.11631544055022,
+    92.11631558602332,
+    157.9137107053268
+  ]
+}

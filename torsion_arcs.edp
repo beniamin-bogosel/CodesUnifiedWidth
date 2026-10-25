@@ -1,0 +1,56 @@
+// Circular arcs are exact inputs; buildmesh uses inscribed polygonal chords.
+// P2 finite elements and boundary fluxes below are numerical, not certificates.
+include "getARGV.idp"
+verbosity=0;
+string input=getARGV("-input","arcs.dat");
+string fluxout=getARGV("-flux","flux.dat");
+int subdivisions=getARGV("-N",60);
+ifstream data(input);
+int count;
+data >> count;
+real[int] cx(count),cy(count),rad(count),aa(count),span(count);
+real[int] vx(count),vy(count),vr(count);
+for(int j=0;j<count;j++)
+    data >> cx[j] >> cy[j] >> rad[j] >> aa[j] >> span[j]
+         >> vx[j] >> vy[j] >> vr[j];
+int[int] sizes(count);
+for(int j=0;j<count;j++) sizes[j]=max(2,int(ceil(subdivisions*rad[j]*span[j])));
+border boundary(t=0,1;j){
+    real theta=aa[j]+t*span[j];
+    x=cx[j]+rad[j]*cos(theta);
+    y=cy[j]+rad[j]*sin(theta);
+    label=j+1;
+}
+mesh Th=buildmesh(boundary(sizes));
+fespace Wh(Th,P2);
+Wh u,test;
+int[int] labels(count);
+for(int j=0;j<count;j++) labels[j]=j+1;
+varf stiffness(u,test)=int2d(Th)(dx(u)*dx(test)+dy(u)*dy(test))
+    +on(labels,u=0);
+varf loadform(u,test)=int2d(Th)(test)+on(labels,u=0);
+matrix K=stiffness(Wh,Wh,solver=sparsesolver);
+real[int] rhs=loadform(0,Wh);
+u[]=K^-1*rhs;
+real derivative=0.;
+for(int j=0;j<count;j++)
+    derivative+=int1d(Th,j+1,qforder=9)(
+        (dx(u)*N.x+dy(u)*N.y)^2*(vx[j]*N.x+vy[j]*N.y+vr[j]));
+cout.precision(17);
+cout << "RESULT " << int2d(Th)(1.) << " " << int2d(Th)(u)
+     << " " << derivative << " " << Th.nv << endl;
+ofstream flux(fluxout);
+flux.precision(17);
+for(int j=0;j<count;j++){
+    for(int k=1;k<100;k++){
+        real f=k/100.;
+        real theta=aa[j]+f*span[j];
+        // Evaluate just inside the chordal mesh.
+        real xx=cx[j]+rad[j]*cos(theta);
+        real yy=cy[j]+rad[j]*sin(theta);
+        real eps=2e-4;
+        real q=-(dx(u)(xx-eps*cos(theta),yy-eps*sin(theta))*cos(theta)
+                +dy(u)(xx-eps*cos(theta),yy-eps*sin(theta))*sin(theta));
+        flux << j << " " << f << " " << q << endl;
+    }
+}

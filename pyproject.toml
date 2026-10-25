@@ -1,0 +1,25 @@
+[project]
+name = "codes-unified-width"
+version = "0.1.0"
+description = "Numerical experiments for shape optimization under minimal width and constant width constraints"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{name = "Beniamin Bogosel"}]
+dependencies = [
+    "numpy>=1.26,<3",
+    "scipy>=1.11,<2",
+    "sympy>=1.12,<2",
+    "matplotlib>=3.8,<4",
+    "mpmath>=1.3,<2",
+]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+py-modules = ["cwgeom", "explore_caps", "check_geometry", "check_width_comparisons", "check_eigenvalues"]
+packages = ["heat_spectrum", "kernel_width"]
+
+[tool.setuptools.package-data]
+heat_spectrum = ["*.edp", "*.json", "data/*.json"]

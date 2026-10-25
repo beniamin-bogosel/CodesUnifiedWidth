@@ -1,0 +1,41 @@
+// P2 spectrum and heat coefficients on analytic line/arc inputs.
+include "getARGV.idp"
+verbosity=0;
+string input=getARGV("-input","boundary.dat");
+int resolution=getARGV("-N",60);
+int nev=getARGV("-nev",24);
+ifstream data(input);
+int count; data >> count;
+int[int] kind(count),sizes(count),labels(count);
+real[int] a(count),b(count),c(count),d(count),e(count);
+for(int j=0;j<count;j++){
+ data >> kind[j] >> a[j] >> b[j] >> c[j] >> d[j] >> e[j];
+ real len=kind[j]==0 ? c[j]*e[j] : sqrt((c[j]-a[j])^2+(d[j]-b[j])^2);
+ sizes[j]=max(2,int(ceil(resolution*len)));
+ labels[j]=j+1;
+}
+border boundary(t=0,1;j){
+ if(kind[j]==0){x=a[j]+c[j]*cos(d[j]+t*e[j]);y=b[j]+c[j]*sin(d[j]+t*e[j]);}
+ else{x=a[j]+t*(c[j]-a[j]);y=b[j]+t*(d[j]-b[j]);}
+ label=j+1;
+}
+mesh Th=buildmesh(boundary(sizes));
+fespace Vh(Th,P2);
+Vh u,v;
+varf aa(u,v)=int2d(Th)(dx(u)*dx(v)+dy(u)*dy(v))+on(labels,u=0);
+varf mm(u,v)=int2d(Th)(u*v);
+matrix K=aa(Vh,Vh,solver=sparsesolver),M=mm(Vh,Vh);
+real[int] values(nev);
+Vh[int] modes(nev);
+int converged=EigenValue(K,M,sym=true,sigma=0.,value=values,vector=modes,
+ tol=1e-11,maxit=2000,ncv=2*nev+8);
+cout.precision(17);
+cout << "DOMAIN " << int2d(Th)(1.) << " " << Th.nv << " " << Vh.ndof << " " << converged << endl;
+assert(converged>=nev);
+for(int j=0;j<nev;j++){
+ u=modes[j];
+ real norm2=int2d(Th)(u*u);
+ real integral=int2d(Th)(u);
+ real rayleigh=int2d(Th)(dx(u)*dx(u)+dy(u)*dy(u))/norm2;
+ cout << "MODE " << values[j] << " " << integral^2/norm2 << " " << abs(values[j]-rayleigh) << endl;
+}

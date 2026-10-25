@@ -1,0 +1,15 @@
+{
+  "derivative_max_abs_error": 1.4931134106888067e-08,
+  "radial_area_max_abs_error": 3.3306690738754696e-16,
+  "independent_reuleaux_area_max_abs_error": 2.220446049250313e-16,
+  "concave_counterexample_epsilon": 0.016666666666666666,
+  "concave_counterexample_value": 3.0892327760299634,
+  "reuleaux_counterexample_value": 3.141592653589793,
+  "convexity_diagnostics": {
+    "min_sample_curvature": 0.09999999999999998,
+    "convexity_margin": 0.09999999999999998,
+    "width": 1.0
+  },
+  "curved_cap_perimeter_deficit_r045": 0.05633946566812442,
+  "note": "Floating-point implementation checks; analytic proofs are in the manuscript."
+}

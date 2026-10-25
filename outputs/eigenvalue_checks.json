@@ -1,0 +1,97 @@
+{
+  "status": "Approximate P2 finite-element evidence; no certification.",
+  "rows": [
+    {
+      "r": 0.42264973081037416,
+      "N": 50,
+      "eigenvalue": 27.27742477089273,
+      "hadamard_derivative": -43.751802750495656,
+      "area": 0.7046724697333295,
+      "vertices": 2236,
+      "rayleigh_defect": 4.121147867408581e-13,
+      "min_sampled_paired_flux_difference": 0.13909992404583438,
+      "max_sampled_paired_flux_difference": 7.22314798989635
+    },
+    {
+      "r": 0.45,
+      "N": 50,
+      "eigenvalue": 26.312668451938183,
+      "hadamard_derivative": -27.33584972208157,
+      "area": 0.7095646366000165,
+      "vertices": 2151,
+      "rayleigh_defect": 8.171241461241152e-14,
+      "min_sampled_paired_flux_difference": 0.07400292499612782,
+      "max_sampled_paired_flux_difference": 4.788814677127371
+    },
+    {
+      "r": 0.5,
+      "N": 50,
+      "eigenvalue": 25.641487951169918,
+      "hadamard_derivative": -0.018653966699877754,
+      "area": 0.7131363693945276,
+      "vertices": 2148,
+      "rayleigh_defect": 3.304023721284466e-13,
+      "min_sampled_paired_flux_difference": -0.07877276012155221,
+      "max_sampled_paired_flux_difference": 0.06724144508588381
+    },
+    {
+      "r": 0.42264973081037416,
+      "N": 100,
+      "eigenvalue": 27.27449466828815,
+      "hadamard_derivative": -43.69941871728615,
+      "area": 0.7047453717686105,
+      "vertices": 8536,
+      "rayleigh_defect": 9.414691248821327e-13,
+      "min_sampled_paired_flux_difference": 0.10767736647388038,
+      "max_sampled_paired_flux_difference": 7.315195900695487
+    },
+    {
+      "r": 0.45,
+      "N": 100,
+      "eigenvalue": 26.30979711692794,
+      "hadamard_derivative": -27.19172550854436,
+      "area": 0.7096395502384766,
+      "vertices": 8413,
+      "rayleigh_defect": 6.643574579356937e-13,
+      "min_sampled_paired_flux_difference": 0.07910663974348431,
+      "max_sampled_paired_flux_difference": 4.578149308529473
+    },
+    {
+      "r": 0.5,
+      "N": 100,
+      "eigenvalue": 25.638839437666995,
+      "hadamard_derivative": -0.008560907161188484,
+      "area": 0.7132070185966382,
+      "vertices": 8076,
+      "rayleigh_defect": 2.4513724383723456e-13,
+      "min_sampled_paired_flux_difference": -0.11836884418391236,
+      "max_sampled_paired_flux_difference": 0.0633270902470322
+    }
+  ],
+  "finite_difference_rows": [
+    {
+      "r": 0.449,
+      "N": 100,
+      "eigenvalue": 26.3372751264111,
+      "hadamard_derivative": -27.760938857694,
+      "area": 0.7094963548716667,
+      "vertices": 8340,
+      "rayleigh_defect": 2.4868995751603507e-14,
+      "min_sampled_paired_flux_difference": 0.08118896609487791,
+      "max_sampled_paired_flux_difference": 4.6740402636081795
+    },
+    {
+      "r": 0.451,
+      "N": 100,
+      "eigenvalue": 26.282893189752507,
+      "hadamard_derivative": -26.670391187076937,
+      "area": 0.7097799827804079,
+      "vertices": 8447,
+      "rayleigh_defect": 9.130474154517287e-13,
+      "min_sampled_paired_flux_difference": 0.0797755597415577,
+      "max_sampled_paired_flux_difference": 4.527883606486144
+    }
+  ],
+  "finite_difference_at_045": -27.190968329296794,
+  "note": "At r=.5 exact paired flux differences and derivative vanish; mesh asymmetry remains."
+}
