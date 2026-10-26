@@ -155,3 +155,34 @@ Validation on 26 October 2026 passed: editable installation, `make check`,
 `make smoke`, and `make figures kernels heat`. The full fine-mesh PDE studies
 were not rerun during packaging; their original reference JSON is retained
 unchanged, and `make smoke` independently exercised fresh FreeFEM solves.
+
+## Cap stability constants (27 October 2026)
+
+The self-contained script `kernel_width/stability_constant.py` explores the
+symmetric-difference quotient in Lemma 6.8 and the following remark. It uses
+the explicit radial profiles, samples admissible gap triples and inradii, and
+numerically minimizes over reference-body rotations. It also records the
+quotients obtained by aligning a cap axis with a reference axis.
+
+```bash
+make stability
+python kernel_width/stability_constant.py --quick
+python kernel_width/stability_constant.py --grid 12 --order 48 --phases 48 \
+  --out kernel_width/stability_scan_refined.json
+```
+
+The default results are in `kernel_width/stability_scan.json`; a finer run is
+in `kernel_width/stability_scan_refined.json`. Numerical checks compare radial
+areas with the analytic formulas, check rotational symmetry and geometric
+lower bounds for the symmetric difference, and repeat the largest sampled
+rotation-optimized quotient with higher quadrature and phase resolution.
+
+The alignment convention matters. The quoted rough values **6.8** (straight)
+and **16.3** (circular) concern prescribed cap-axis alignment. The largest
+sampled quotients after numerical minimization over rotation are approximately
+**4.85** and **12.25**, respectively. These computations do not determine the
+supremum over all configurations or certify any uniform upper bound. In
+particular, neither 7 nor 17 is proved to be a valid stability constant.
+
+Earlier heat/spectrum and coordinate investigations remain in this repository
+even though they were removed from the shortened manuscript.

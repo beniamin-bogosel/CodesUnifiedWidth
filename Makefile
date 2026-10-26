@@ -5,13 +5,14 @@ export MPLBACKEND = Agg
 export MPLCONFIGDIR = $(CURDIR)/.matplotlib
 HEAT_FLAGS ?=
 
-.PHONY: help check smoke figures kernels torsion eigenvalues heat reproduce
+.PHONY: help check smoke figures kernels stability torsion eigenvalues heat reproduce
 
 help:
 	@echo "make check       Geometry, coordinate certificates, and recorded-result checks (no FreeFEM)"
 	@echo "make smoke       Fresh FreeFEM solves checked against exact disk/triangle values"
 	@echo "make figures     Regenerate all geometric illustrations"
 	@echo "make kernels     Riesz/clipping and coordinate experiments, certificates, and plots"
+	@echo "make stability   Explore rotation-optimized and axis-aligned cap stability quotients"
 	@echo "make torsion     Hexagon torsion table at N=80 and N=160"
 	@echo "make eigenvalues First eigenvalue table and boundary derivative checks"
 	@echo "make heat        Seven heat/spectrum studies and summary (uses supplied caches)"
@@ -40,6 +41,9 @@ kernels:
 	$(PYTHON) kernel_width/certify_cutoff.py
 	$(PYTHON) kernel_width/coordinate_experiments.py
 
+stability:
+	$(PYTHON) kernel_width/stability_constant.py
+
 torsion:
 	$(PYTHON) explore_caps.py --N 80 --hexagon
 	$(PYTHON) explore_caps.py --N 160 --hexagon
@@ -61,6 +65,7 @@ reproduce:
 	$(MAKE) check
 	$(MAKE) figures
 	$(MAKE) kernels
+	$(MAKE) stability
 	$(MAKE) torsion
 	$(MAKE) eigenvalues
 	$(MAKE) heat HEAT_FLAGS="$(HEAT_FLAGS)"
